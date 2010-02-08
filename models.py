@@ -4,6 +4,9 @@ class Stock(db.Model):
 	code = db.StringProperty()
 	description = db.StringProperty()
 	type= db.StringProperty()
+    
+	def __str__(self):
+		return "Stock<key: %s, code: %s, description: %s, type: %s>" % (str(self.key()), self.code, self.description, self.type)
 
 class IbovWatcherUser(db.Model):
 	user = db.UserProperty()

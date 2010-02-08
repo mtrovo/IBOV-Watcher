@@ -12,18 +12,35 @@
 		</script>
 	</head>
 	<body>
-    <table>
+    <span>{{stocks|length}} / {{size}}</span>
+    <table border='1' width="800px">
+    	<tr>
+    		<td>Key</td>
+    		<td>Code</td>
+    		<td>Desc</td>
+    		<td>Type</td>
+    		
+    	</tr>
+    	
     {% for stock in stocks %}
     	<tr>
+        	<td style="font-family:monospace">{{ stock.key }}</td>
         	<td>{{stock.code}}</td>
         	<td>{{stock.description}}</td>
             <td>{{stock.type}}</td>
         </tr>
     {% endfor %}
     	<tr>
-    		<td><a href="/stocks?first={{first}}" />PREV</a></td>
+    		<td><a href="/stocks?first={{first}}&size={{size}}" />PREV</a></td>
     		<td>&nbsp;</td>
-    		<td><a href="/stocks?last={{last}}" />NEXT</a></td>
+    		<td>&nbsp;</td>
+    		<td>
+            	{% if render_next_link %}
+            		<a href="/stocks?last={{last}}&size={{size}}" />NEXT</a>
+                {% else %}
+                	&nbsp;
+                {% endif %}
+            </td>
     		
     	</tr>
     	
